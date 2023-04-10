@@ -1,0 +1,8 @@
+{
+    "name": "main-image",
+    "version": "1.0.0",
+    "main": "MainImage.tsx",
+    "dependencies": {
+      "react": "^17.0.2"
+    }
+}
