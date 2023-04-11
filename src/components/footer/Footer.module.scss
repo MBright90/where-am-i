@@ -1,0 +1,26 @@
+.createdBy, .credits {
+    align-items: center;
+    background-color: rgba(50, 50, 50, 0.7);
+    border: 3px solid #FFF;
+    border-radius: 10px;
+    color: #FFF;
+    display: flex;
+    letter-spacing: 2px;
+    padding: 10px;
+    position: fixed;
+
+    svg {
+        font-size: 30px;
+        margin-right: 5px;
+    }
+}
+
+.createdBy {
+    bottom: 10px;
+    left: 10px;
+}
+
+.credits {
+    bottom: 10px;
+    right: 10px;
+}
