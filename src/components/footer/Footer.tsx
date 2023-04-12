@@ -8,11 +8,11 @@ const Footer: React.FC = () => {
   return (
     <React.Fragment>
       <a className={style.createdBy} href="https://github.com/MBright90/where-am-i">
-        <FontAwesomeIcon icon={faGithub} /> MBright90
+        <FontAwesomeIcon icon={faGithub} /> <p>MBright90</p>
       </a>
 
       <a className={style.credits} href="https://www.instagram.com/ad.2.222/">
-        <FontAwesomeIcon icon={faInstagram} /> Egor Klyuchnyk
+        <FontAwesomeIcon icon={faInstagram} /> <p>Egor Klyuchnyk</p>
       </a>
     </React.Fragment>
   )

@@ -1,3 +1,5 @@
+@import '~@style/_breakpoints.scss';
+
 .createdBy, .credits {
     align-items: center;
     background-color: rgba(50, 50, 50, 0.7);
@@ -6,12 +8,22 @@
     color: #FFF;
     display: flex;
     letter-spacing: 2px;
-    padding: 10px;
+    padding: 5px 5px 5px 10px;
     position: fixed;
+
+    p {
+        display: none;
+    }
 
     svg {
         font-size: 30px;
         margin-right: 5px;
+    }
+
+    @media(min-width: $breakpoint-large) {
+        p {
+            display: inline-block;
+        }
     }
 }
 
