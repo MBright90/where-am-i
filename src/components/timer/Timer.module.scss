@@ -7,6 +7,7 @@
     border-radius: 10px;
     color: #FFF;
     display: flex;
+    font-size: 30px;
     left: 50%;
     letter-spacing: 2px;
     justify-content: center;
@@ -15,5 +16,8 @@
     top: 10px;
     transform: translateX(-50%);
     width: 200px;
-}
 
+    svg {
+        margin-right: 10px;
+    }
+}
