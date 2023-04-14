@@ -11,8 +11,8 @@ const gameIsStarted = true
 const App: React.FC = () => {
   return (
     <div className={style.appOverlay}>
-      {gameIsStarted ? <Timer /> : null}
       <MainImage imageURL={robotCity} />
+      {gameIsStarted ? <Timer /> : null}
       <Footer />
     </div>
   )
