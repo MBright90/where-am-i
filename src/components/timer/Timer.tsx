@@ -4,6 +4,15 @@ import React, { useEffect, useState } from 'react'
 
 import style from './Timer.module.scss'
 
+let formattedTime = '00:00'
+
+const formatTimer = (timeCount: number) => {
+  const minutes = Math.floor(timeCount / 60).toLocaleString(undefined, { minimumIntegerDigits: 2 })
+  const seconds = (timeCount % 60).toLocaleString(undefined, { minimumIntegerDigits: 2 })
+
+  return `${minutes}:${seconds}`
+}
+
 const Timer: React.FC = () => {
   const [timeCount, setTimeCount] = useState(0)
 
@@ -14,10 +23,14 @@ const Timer: React.FC = () => {
     return () => clearInterval(timer)
   }, [])
 
+  useEffect(() => {
+    formattedTime = formatTimer(timeCount)
+  }, [timeCount])
+
   return (
     <div className={style.timerContainer}>
       <FontAwesomeIcon icon={faClock} />
-      <p>{timeCount}</p>
+      <p>{formattedTime}</p>
     </div>
   )
 }
