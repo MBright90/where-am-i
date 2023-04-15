@@ -1,0 +1,8 @@
+{
+    "name": "check-item",
+    "version": "1.0.0",
+    "main": "CheckItem.tsx",
+    "dependencies": {
+        "react": "^17.0.2"
+    }
+}
