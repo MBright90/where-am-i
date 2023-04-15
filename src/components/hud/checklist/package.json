@@ -1,0 +1,8 @@
+{
+    "name": "checklist",
+    "version": "1.0.0",
+    "main": "Checklist.tsx",
+    "dependencies": {
+        "react": "^17.0.2"
+    }
+}
