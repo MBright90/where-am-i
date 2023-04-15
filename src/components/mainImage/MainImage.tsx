@@ -20,8 +20,6 @@ const MainImage: React.FC<Props> = ({ imageURL }) => {
 
     const xPosPercent = convertToPercentage(e.clientX - rect.left, e.currentTarget.width)
     const yPosPercent = convertToPercentage(e.clientY - rect.top, e.currentTarget.height)
-    console.log(`x: ${xPosPercent}`)
-    console.log(`y: ${yPosPercent}`)
     return { X: xPosPercent, Y: yPosPercent }
   }
 
