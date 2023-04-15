@@ -1,4 +1,4 @@
-import robotCity from '@assets/images/robot-city.jpg'
+import robotCity from '@assets/images/robot-city/robot-city.jpg'
 import { Footer, Timer } from '@components/hud'
 import MainImage from '@components/mainImage'
 import React from 'react'
