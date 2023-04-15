@@ -12,3 +12,4 @@
 .env.production.local
 
 *.log*
+firebaseConfig.js
