@@ -11,11 +11,11 @@ interface Props {
 
 const MainImage: React.FC<Props> = ({ imageURL }) => {
   // Currently logs current coords of click
-  const logCoords: MouseEventHandler<HTMLImageElement> = (e) => {
-    console.log(`e: ${e.clientX}, y: ${e.clientY}`)
+  const retrieveCoords: MouseEventHandler<HTMLImageElement> = (e) => {
+    return { X: e.clientX, Y: e.clientY }
   }
 
-  return <img className={style.mainImage} src={imageURL} alt="mainImage" onClick={logCoords} />
+  return <img className={style.mainImage} src={imageURL} alt="mainImage" onClick={retrieveCoords} />
 }
 
 export default MainImage
