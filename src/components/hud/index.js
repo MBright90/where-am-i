@@ -1,4 +1,4 @@
-import Footer from './Footer'
+import Footer from './footer'
 import Timer from './timer'
 
 export { Footer, Timer }
