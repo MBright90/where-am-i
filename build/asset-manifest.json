@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "./static/css/main.9d26505a.css",
+    "main.js": "./static/js/main.b6e2ee74.js",
+    "static/media/robot-city.jpg": "./static/media/robot-city.8ad8cd812dae8d55031c.jpg",
+    "index.html": "./index.html",
+    "main.9d26505a.css.map": "./static/css/main.9d26505a.css.map",
+    "main.b6e2ee74.js.map": "./static/js/main.b6e2ee74.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9d26505a.css",
+    "static/js/main.b6e2ee74.js"
+  ]
+}
