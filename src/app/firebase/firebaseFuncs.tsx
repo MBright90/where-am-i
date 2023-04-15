@@ -38,8 +38,16 @@ async function getCharactersPosition(characterId: string, imageId: string) {
     const querySnapshot = await getDocs(
       query(imageCharacters, where('characterId', '==', characterId))
     )
+    const characterDoc = querySnapshot.docs[0].data()
+    return {
+      lowX: characterDoc.lowX,
+      lowY: characterDoc.lowY,
+      highX: characterDoc.highX,
+      highY: characterDoc.highY
+    }
   } catch (error) {
     console.log('Could not retrieve character ranges: ', error)
+    return {}
   }
 }
 
