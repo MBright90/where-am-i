@@ -10,12 +10,29 @@ interface Props {
 }
 
 const MainImage: React.FC<Props> = ({ imageURL }) => {
-  // Currently logs current coords of click
-  const retrieveCoords: MouseEventHandler<HTMLImageElement> = (e) => {
-    return { X: e.clientX, Y: e.clientY }
+  const convertToPercentage = (position: number, totalLength: number) => {
+    return (position / totalLength) * 100
   }
 
-  return <img className={style.mainImage} src={imageURL} alt="mainImage" onClick={retrieveCoords} />
+  // Currently logs current coords of click
+  const retrieveCoordsPercentage: MouseEventHandler<HTMLImageElement> = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+
+    const xPosPercent = convertToPercentage(e.clientX - rect.left, e.currentTarget.width)
+    const yPosPercent = convertToPercentage(e.clientY - rect.top, e.currentTarget.height)
+    console.log(`x: ${xPosPercent}`)
+    console.log(`y: ${yPosPercent}`)
+    return { X: xPosPercent, Y: yPosPercent }
+  }
+
+  return (
+    <img
+      className={style.mainImage}
+      src={imageURL}
+      alt="mainImage"
+      onClick={retrieveCoordsPercentage}
+    />
+  )
 }
 
 export default MainImage
