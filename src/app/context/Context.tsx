@@ -1,25 +1,26 @@
 import { getCharactersPosition, retrieveCharacters } from '@app/firebase/firebaseFuncs'
+import { Character } from '@customTypes/types'
 import React, { ReactNode, createContext, useState } from 'react'
 
 interface AppContextData {
+  currentCharacters: Character[]
   getCharactersPosition: typeof getCharactersPosition
-  retrieveCharacters: typeof retrieveCharacters
 }
 
 export const AppContext = createContext<AppContextData>({
-  retrieveCharacters,
+  currentCharacters: [],
   getCharactersPosition
 })
 
-interface props {
+interface Props {
   children: ReactNode
 }
 
-const AppProvider: React.FC<props> = ({ children }) => {
-  const [currentCharacters, setCurrentCharacters] = useState([])
+const AppProvider: React.FC<Props> = ({ children }) => {
+  const [currentCharacters, setCurrentCharacters] = useState<Character[]>([])
 
   async function handleSetCurrentCharacters(imageId: string): Promise<void> {
-    const characters = await retrieveCharacters(imageId)
+    const characters: Array<Character> = await retrieveCharacters(imageId)
     setCurrentCharacters([...characters])
   }
 
