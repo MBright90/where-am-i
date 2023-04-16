@@ -5,11 +5,11 @@ import React, { MouseEventHandler } from 'react'
 
 import style from './MainImage.module.scss'
 
-interface Props {
+interface MainImageProps {
   imageURL?: string
 }
 
-const MainImage: React.FC<Props> = ({ imageURL }) => {
+const MainImage: React.FC<MainImageProps> = ({ imageURL }) => {
   const convertToPercentage = (position: number, totalLength: number) => {
     return (position / totalLength) * 100
   }
