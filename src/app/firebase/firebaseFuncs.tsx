@@ -19,7 +19,7 @@ async function retrieveCharacters(imageId: string) {
       const characterData = character.data()
       return {
         name: characterData.name,
-        id: characterData.name.toLowercase().replace(' ', '-'),
+        characterId: characterData.characterId,
         storeId: character.id
       }
     })
