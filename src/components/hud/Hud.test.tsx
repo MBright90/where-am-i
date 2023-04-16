@@ -1,11 +1,11 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import Checklist from './Checklist'
+import HUD from './HUD'
 
-describe('Checklist', () => {
+describe('HUD', () => {
   it('renders to match snapshot', () => {
-    const { container } = render(<Checklist />)
+    const { container } = render(<HUD />)
     expect(container).toMatchSnapshot()
   })
 })

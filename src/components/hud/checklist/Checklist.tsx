@@ -5,11 +5,7 @@ import React, { ReactNode, useContext, useState } from 'react'
 import style from './Checklist.module.scss'
 import CheckItem from './checkItem/CheckItem'
 
-interface ChecklistProps {
-  imageId: string
-}
-
-const Checklist: React.FC<ChecklistProps> = () => {
+const Checklist: React.FC = () => {
   const [isShowing, setIsShowing] = useState<boolean>(false)
   const { currentCharacters } = useContext(AppContext)
 

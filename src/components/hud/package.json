@@ -1,0 +1,8 @@
+{
+    "name": "hud",
+    "version": "1.0.0",
+    "main": "HUD.tsx",
+    "dependencies": {
+        "react": "^17.0.2"
+    }
+}
