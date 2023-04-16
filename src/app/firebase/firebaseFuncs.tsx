@@ -1,12 +1,8 @@
+import { Character } from '@customTypes/types'
 import { addDoc, collection, doc, getDocs, getFirestore, query, where } from 'firebase/firestore'
 
-interface character {
+interface RequiredImageCharacter extends Character {
   image: string
-  name: string
-  lowX: number
-  lowY: number
-  highX: number
-  highY: number
 }
 
 async function retrieveCharacters(imageId: string) {
@@ -51,7 +47,7 @@ async function getCharactersPosition(characterId: string, imageId: string) {
   }
 }
 
-async function writeNewCharacter(character: character) {
+async function writeNewCharacter(character: RequiredImageCharacter) {
   try {
     const imageSet = collection(doc(getFirestore(), 'images', character.image), 'characters')
     await addDoc(imageSet, {
