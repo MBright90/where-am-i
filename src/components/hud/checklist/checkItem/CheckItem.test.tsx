@@ -7,7 +7,12 @@ describe('CheckItem', () => {
   it('renders to match snapshot', () => {
     const { container } = render(
       <CheckItem
-        character={{ name: 'exampleName', id: 'exampleId', image: 'exampleImage', hasFound: false }}
+        character={{
+          name: 'exampleName',
+          characterId: 'exampleId',
+          image: 'exampleImage',
+          hasFound: false
+        }}
       />
     )
     expect(container).toMatchSnapshot()
