@@ -1,5 +1,5 @@
 import robotCity from '@assets/images/robot-city/robot-city.jpg'
-import { Footer, Timer } from '@components/hud'
+import HUD from '@components/hud'
 import MainImage from '@components/mainImage'
 import React from 'react'
 
@@ -11,8 +11,7 @@ const App: React.FC = () => {
   return (
     <div className={style.appOverlay}>
       <MainImage imageURL={robotCity} />
-      {gameIsStarted ? <Timer /> : null}
-      <Footer />
+      {gameIsStarted ? <HUD /> : null}
     </div>
   )
 }
