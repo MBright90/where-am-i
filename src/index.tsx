@@ -1,9 +1,9 @@
+import App from '@app/App'
 import '@style/style.scss'
 import { initializeApp } from 'firebase/app'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-import App from './app'
 import firebaseConfig from './app/firebase/firebaseConfig'
 
 try {
