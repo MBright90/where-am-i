@@ -1,0 +1,8 @@
+{
+    "name": "context",
+    "version": "1.0.0",
+    "main": "Context.tsx",
+    "dependencies": {
+      "react": "^17.0.2"
+    }
+}
