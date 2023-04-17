@@ -1,4 +1,5 @@
 import App from '@app/App'
+import AppProvider from '@app/context/Context'
 import '@style/style.scss'
 import { initializeApp } from 'firebase/app'
 import React from 'react'
@@ -15,6 +16,8 @@ try {
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <App />
+    <AppProvider>
+      <App />
+    </AppProvider>
   </React.StrictMode>
 )
