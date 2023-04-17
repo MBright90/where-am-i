@@ -5,16 +5,16 @@ import React, { KeyboardEventHandler, MouseEventHandler, useContext } from 'reac
 import style from './StartImageTile.module.scss'
 
 const StartImageTile: React.FC<{ imageURL: string; imageId: string }> = ({ imageURL, imageId }) => {
-  const { handleSetCurrentImage } = useContext(AppContext)
+  const { handleStartGame } = useContext(AppContext)
 
   const handleDivClick: MouseEventHandler<HTMLDivElement> = (e) => {
     const id = e.currentTarget.dataset.imageId ?? ''
-    handleSetCurrentImage(id)
+    handleStartGame(id)
   }
 
   const handleDivKeyDown: KeyboardEventHandler<HTMLDivElement> = (e) => {
     const id = e.currentTarget.dataset.imageId ?? ''
-    handleSetCurrentImage(id)
+    handleStartGame(id)
   }
 
   return (

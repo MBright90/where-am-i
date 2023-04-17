@@ -6,16 +6,14 @@ interface AppContextData {
   currentCharacters: Character[]
   gameIsStarted: boolean
   getCharactersPosition: typeof getCharactersPosition
-  handleSetCurrentImage: (imageId: string) => Promise<void>
-  handleSetIsGameStarted: (gameStartState: boolean) => void
+  handleStartGame: (imageId: string) => Promise<void>
 }
 
 export const AppContext = createContext<AppContextData>({
   currentCharacters: [],
   gameIsStarted: false,
   getCharactersPosition,
-  handleSetCurrentImage: () => Promise.resolve(),
-  handleSetIsGameStarted: () => Boolean
+  handleStartGame: () => Promise.resolve()
 })
 
 const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -28,21 +26,17 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     setCurrentCharacters([...characters])
   }
 
-  async function handleSetCurrentImage(imageId: string): Promise<void> {
+  async function handleStartGame(imageId: string): Promise<void> {
     setCurrentImage(imageId)
     await handleSetCurrentCharacters(imageId)
-  }
-
-  function handleSetIsGameStarted(gameStartState: boolean) {
-    setGameIsStarted(gameStartState)
+    setGameIsStarted(true)
   }
 
   const contextValue = {
     currentCharacters,
     currentImage,
     handleSetCurrentCharacters,
-    handleSetCurrentImage,
-    handleSetIsGameStarted,
+    handleStartGame,
     gameIsStarted,
     getCharactersPosition
   }
