@@ -9,3 +9,8 @@ export interface Character {
   lowX?: number
   lowY?: number
 }
+
+export interface ImageTile {
+  imageURL: string
+  imageId: string
+}
