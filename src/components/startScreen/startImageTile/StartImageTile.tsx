@@ -1,0 +1,33 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+import { AppContext } from '@app/context/Context'
+import React, { KeyboardEventHandler, MouseEventHandler, useContext } from 'react'
+
+import style from './StartImageTile.module.scss'
+
+const StartImageTile: React.FC<{ imageURL: string; imageId: string }> = ({ imageURL, imageId }) => {
+  const { handleSetCurrentImage } = useContext(AppContext)
+
+  const handleDivClick: MouseEventHandler<HTMLDivElement> = (e) => {
+    const id = e.currentTarget.dataset.imageId ?? ''
+    handleSetCurrentImage(id)
+  }
+
+  const handleDivKeyDown: KeyboardEventHandler<HTMLDivElement> = (e) => {
+    const id = e.currentTarget.dataset.imageId ?? ''
+    handleSetCurrentImage(id)
+  }
+
+  return (
+    <div
+      className={style.imageTile}
+      data-image-id={imageId}
+      onClick={handleDivClick}
+      onKeyDown={handleDivKeyDown}
+      tabIndex={0}
+    >
+      <img src={imageURL} alt={imageId} />
+    </div>
+  )
+}
+
+export default StartImageTile

@@ -1,0 +1,8 @@
+{
+    "name": "start-screen",
+    "version": "1.0.0",
+    "main": "StartScreen.tsx",
+    "dependencies": {
+      "react": "^17.0.2"
+    }
+}
