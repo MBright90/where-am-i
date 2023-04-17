@@ -1,0 +1,26 @@
+.checklistToggle {
+    align-items: center;
+    background-color: rgba(50, 50, 50, 0.7);
+    border: 3px solid #fff;
+    border-radius: 10px;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    min-height: 50px;
+    left: 10px;
+    position: fixed;
+    top: 10px;
+    width: 50px;
+
+    svg {
+        font-size: 30px;
+        margin: 6px 0 8px 0;
+    }
+}
+
+.checklist {
+    bottom: 0;
+    height: 200px;
+    top: 0;
+    width: 100%;
+}

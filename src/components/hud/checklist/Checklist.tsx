@@ -1,5 +1,7 @@
 import { AppContext } from '@app/context/Context'
 import { Character } from '@customTypes/types'
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { ReactNode, useContext, useState } from 'react'
 
 import style from './Checklist.module.scss'
@@ -13,9 +15,12 @@ const Checklist: React.FC = () => {
     setIsShowing(!isShowing)
   }
 
-  const checkItemArr: Array<ReactNode> = currentCharacters.map((character: Character) => (
-    <CheckItem character={character} key={character.characterId} />
-  ))
+  const createChecklistArr = () => {
+    const checkItemArr: Array<ReactNode> = currentCharacters.map((character: Character) => (
+      <CheckItem character={character} key={character.characterId} />
+    ))
+    return checkItemArr
+  }
 
   return (
     <div
@@ -25,7 +30,8 @@ const Checklist: React.FC = () => {
         if (e.key === 'enter') handleToggleClick()
       }}
     >
-      {isShowing ? <div className={style.checklist}>{checkItemArr}</div> : null}
+      <FontAwesomeIcon icon={faCaretDown} />
+      {isShowing ? <div className={style.checklist}>{createChecklistArr()}</div> : null}
     </div>
   )
 }
