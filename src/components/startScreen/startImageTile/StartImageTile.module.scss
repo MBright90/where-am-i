@@ -1,9 +1,20 @@
 .imageTile {
     border: 3px solid #fff;
-    height: 300px;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 50%;
+
+    &:hover {
+        transform: scale(1.05)
+    }
 
     img {
-        width: 200px;
+        border-radius: 10px;
         height: 100%;
     }
+
+    transition: transform .1s;
+    -webkit-transition: transform .1s;
+    -moz-transition: transform .1s;
+    -o-transition: transform .1s;
 }

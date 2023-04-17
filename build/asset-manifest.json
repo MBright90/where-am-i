@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "./static/css/main.c18d7658.css",
-    "main.js": "./static/js/main.9b40876a.js",
+    "main.css": "./static/css/main.3c4563af.css",
+    "main.js": "./static/js/main.5931c6e7.js",
     "static/media/robot-city.jpg": "./static/media/robot-city.8ad8cd812dae8d55031c.jpg",
     "index.html": "./index.html",
-    "main.c18d7658.css.map": "./static/css/main.c18d7658.css.map",
-    "main.9b40876a.js.map": "./static/js/main.9b40876a.js.map"
+    "main.3c4563af.css.map": "./static/css/main.3c4563af.css.map",
+    "main.5931c6e7.js.map": "./static/js/main.5931c6e7.js.map"
   },
   "entrypoints": [
-    "static/css/main.c18d7658.css",
-    "static/js/main.9b40876a.js"
+    "static/css/main.3c4563af.css",
+    "static/js/main.5931c6e7.js"
   ]
 }
