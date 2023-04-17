@@ -12,15 +12,32 @@
     top: 10px;
     width: 50px;
 
-    svg {
+    .faIcon {
         font-size: 30px;
         margin: 6px 0 8px 0;
+
+        &.toggleActive {
+            transform: rotate(180deg);
+            transform-origin: center;
+        }
+
+        transition: transform ease-in-out .5s;
+        -webkit-transition: transform ease-in-out .5s;
+        -moz-transition: transform ease-in-out .5s;
+        -o-transition: transform ease-in-out .5s;
     }
 }
 
 .checklist {
-    bottom: 0;
-    height: 200px;
-    top: 0;
+    max-height: 0;
     width: 100%;
+
+    &.checklistActive {
+        max-height: 600px;
+    }
+
+    transition: max-height ease-in-out .5s;
+    -webkit-transition: max-height ease-in-out .5s;
+    -moz-transition: max-height ease-in-out .5s;
+    -o-transition: max-height ease-in-out .5s;
 }

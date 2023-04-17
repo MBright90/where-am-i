@@ -30,8 +30,15 @@ const Checklist: React.FC = () => {
         if (e.key === 'enter') handleToggleClick()
       }}
     >
-      <FontAwesomeIcon icon={faCaretDown} />
-      {isShowing ? <div className={style.checklist}>{createChecklistArr()}</div> : null}
+      <FontAwesomeIcon
+        icon={faCaretDown}
+        className={`${style.faIcon} ${isShowing ? style.toggleActive : ''}`}
+      />
+      {isShowing ? (
+        <div className={`${style.checklist} ${isShowing ? style.checklistActive : ''}`}>
+          {createChecklistArr()}
+        </div>
+      ) : null}
     </div>
   )
 }
