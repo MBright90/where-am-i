@@ -1,5 +1,4 @@
 import { AppContext } from '@app/context'
-import robotCity from '@assets/images/robot-city/robot-city.jpg'
 import HUD from '@components/hud'
 import MainImage from '@components/mainImage'
 import StartScreen from '@components/startScreen/StartScreen'
@@ -8,13 +7,13 @@ import React, { useContext } from 'react'
 import style from './App.module.scss'
 
 const App: React.FC = () => {
-  const { gameIsStarted } = useContext(AppContext)
+  const { currentImage, gameIsStarted } = useContext(AppContext)
 
-  const gamePlayStart = <StartScreen />
+  const gamePlayStart = <StartScreen locationImageIdArr={['robot-city']} />
 
   const gamePlayActive = (
     <React.Fragment>
-      <MainImage imageURL={robotCity} />
+      <MainImage imageURL={currentImage} />
       <HUD />
     </React.Fragment>
   )
