@@ -9,6 +9,7 @@ import style from './App.module.scss'
 const App: React.FC = () => {
   const { currentImage, gameIsStarted } = useContext(AppContext)
 
+  // Add any further image IDs to these props to add them to app
   const gamePlayStart = <StartScreen locationImageIdArr={['robot-city']} />
 
   const gamePlayActive = (
