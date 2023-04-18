@@ -6,11 +6,11 @@
     color: #FFF;
     display: flex;
     flex-direction: column;
-    min-height: 50px;
+    min-height: 40px;
     left: 10px;
     position: fixed;
     top: 10px;
-    width: 50px;
+    width: 55px;
 
     .faIcon {
         font-size: 30px;
@@ -21,10 +21,10 @@
             transform-origin: center;
         }
 
-        transition: transform ease-in-out .5s;
-        -webkit-transition: transform ease-in-out .5s;
-        -moz-transition: transform ease-in-out .5s;
-        -o-transition: transform ease-in-out .5s;
+        transition: transform ease-in-out .3s;
+        -webkit-transition: transform ease-in-out .3s;
+        -moz-transition: transform ease-in-out .3s;
+        -o-transition: transform ease-in-out .3s;
     }
 }
 
@@ -33,7 +33,7 @@
     width: 100%;
 
     &.checklistActive {
-        max-height: 600px;
+        max-height: 800px;
     }
 
     transition: max-height ease-in-out .5s;

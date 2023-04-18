@@ -1,11 +1,12 @@
 import { AppContext } from '@app/context/Context'
+import { characterImageDatabase } from '@assets/images'
 import { Character } from '@customTypes/types'
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { ReactNode, useContext, useState } from 'react'
 
 import style from './Checklist.module.scss'
-import CheckItem from './checkItem/CheckItem'
+import CheckItem from './checklistItem/ChecklistItem'
 
 const Checklist: React.FC = () => {
   const [isShowing, setIsShowing] = useState<boolean>(false)
@@ -16,9 +17,10 @@ const Checklist: React.FC = () => {
   }
 
   const createChecklistArr = () => {
-    const checkItemArr: Array<ReactNode> = currentCharacters.map((character: Character) => (
-      <CheckItem character={character} key={character.characterId} />
-    ))
+    const checkItemArr: Array<ReactNode> = currentCharacters.map((character: Character) => {
+      const image: string = characterImageDatabase[character.characterId]
+      return <CheckItem character={character} image={image} key={character.characterId} />
+    })
     return checkItemArr
   }
 
