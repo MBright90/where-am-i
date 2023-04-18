@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import { AppContext } from '@app/context/Context'
 import { characterImageDatabase } from '@assets/images'
 import { Character } from '@customTypes/types'
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { ReactNode, useContext, useState } from 'react'
+import React, { ReactNode, useContext, useRef, useState } from 'react'
 
 import style from './Checklist.module.scss'
 import CheckItem from './checklistItem/ChecklistItem'
@@ -11,6 +12,7 @@ import CheckItem from './checklistItem/ChecklistItem'
 const Checklist: React.FC = () => {
   const [isShowing, setIsShowing] = useState<boolean>(false)
   const { currentCharacters } = useContext(AppContext)
+  const toggleRef = useRef<HTMLDivElement>(null)
 
   const handleToggleClick = () => {
     setIsShowing(!isShowing)
@@ -27,10 +29,12 @@ const Checklist: React.FC = () => {
   return (
     <div
       className={style.checklistToggle}
+      ref={toggleRef}
       onClick={handleToggleClick}
       onKeyDown={(e) => {
-        if (e.key === 'enter') handleToggleClick()
+        if (e.code === 'enter') handleToggleClick()
       }}
+      tabIndex={0}
     >
       <FontAwesomeIcon
         icon={faCaretDown}
