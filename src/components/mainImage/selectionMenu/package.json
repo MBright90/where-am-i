@@ -1,0 +1,8 @@
+{
+    "name": "selection-menu",
+    "version": "1.0.0",
+    "main": "SelectionMenu.tsx",
+    "dependencies": {
+      "react": "^17.0.2"
+    }
+}
