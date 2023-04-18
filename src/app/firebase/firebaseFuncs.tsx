@@ -16,7 +16,8 @@ async function retrieveCharacters(imageId: string) {
       return {
         name: characterData.name,
         characterId: characterData.characterId,
-        storeId: character.id
+        storeId: character.id,
+        hasFound: false
       }
     })
     return characters
