@@ -1,9 +1,11 @@
 import { getCharactersPosition, retrieveCharacters } from '@app/firebase/firebaseFuncs'
+import { locationImageDatabase } from '@assets/images'
 import { Character } from '@customTypes/types'
 import React, { ReactNode, createContext, useState } from 'react'
 
 interface AppContextData {
   currentCharacters: Character[]
+  currentImage: string
   gameIsStarted: boolean
   getCharactersPosition: typeof getCharactersPosition
   handleStartGame: (imageId: string) => Promise<void>
@@ -11,6 +13,7 @@ interface AppContextData {
 
 export const AppContext = createContext<AppContextData>({
   currentCharacters: [],
+  currentImage: '',
   gameIsStarted: false,
   getCharactersPosition,
   handleStartGame: () => Promise.resolve()
@@ -27,7 +30,7 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   }
 
   async function handleStartGame(imageId: string): Promise<void> {
-    setCurrentImage(imageId)
+    setCurrentImage(locationImageDatabase[imageId])
     await handleSetCurrentCharacters(imageId)
     setGameIsStarted(true)
   }
