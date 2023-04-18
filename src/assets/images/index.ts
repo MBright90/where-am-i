@@ -5,6 +5,7 @@ import kangJohnson from './kang-johnson.png'
 import megGriffin from './meg-griffin.png'
 import mikeWazowski from './mike-wazowski.png'
 import robotCity from './robot-city.jpg'
+import tick from './tick.png'
 
 interface ImageDatabase {
   [key: string]: string
@@ -22,5 +23,9 @@ const locationImageDatabase: ImageDatabase = {
   'robot-city': robotCity
 }
 
-export { characterImageDatabase, locationImageDatabase }
+const utilityImageDatabase: ImageDatabase = {
+  'tick': tick
+}
+
+export { characterImageDatabase, locationImageDatabase, utilityImageDatabase }
 export default robotCity
