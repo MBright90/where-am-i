@@ -9,6 +9,10 @@ interface AppContextData {
   gameIsStarted: boolean
   getCharactersPosition: typeof getCharactersPosition
   handleStartGame: (imageId: string) => Promise<void>
+  checkSelectionOutcome: (
+    characterID: string,
+    selectionPosition: { X: number; Y: number }
+  ) => Promise<boolean>
 }
 
 export const AppContext = createContext<AppContextData>({
@@ -16,7 +20,8 @@ export const AppContext = createContext<AppContextData>({
   currentImage: '',
   gameIsStarted: false,
   getCharactersPosition,
-  handleStartGame: () => Promise.resolve()
+  handleStartGame: () => Promise.resolve(),
+  checkSelectionOutcome: () => Promise.resolve(false)
 })
 
 const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -35,13 +40,31 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     setGameIsStarted(true)
   }
 
+  async function checkSelectionOutcome(
+    characterId: string,
+    selectionPosition: { X: number; Y: number }
+  ): Promise<boolean> {
+    const positionRanges = await getCharactersPosition(characterId, currentImage)
+    const selectedX: number = selectionPosition.X
+    const selectedY: number = selectionPosition.Y
+    if (
+      positionRanges.lowX < selectedX &&
+      positionRanges.highX > selectedX &&
+      positionRanges.lowY < selectedY &&
+      positionRanges.highY > selectedY
+    )
+      return true
+    return false
+  }
+
   const contextValue = {
     currentCharacters,
     currentImage,
     handleSetCurrentCharacters,
     handleStartGame,
     gameIsStarted,
-    getCharactersPosition
+    getCharactersPosition,
+    checkSelectionOutcome
   }
 
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
