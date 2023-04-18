@@ -1,7 +1,7 @@
 import { Character } from '@customTypes/types'
 import React from 'react'
 
-import style from './CheckItem.module.scss'
+import style from './ChecklistItem.module.scss'
 
 interface ChecklistItemProps {
   character: Character
