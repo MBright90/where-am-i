@@ -57,11 +57,18 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     return false
   }
 
+  function handleCharacterSelection() {
+    console.log('ham please')
+  }
+
   const contextValue = {
     currentCharacters,
     currentImage,
+
+    handleCharacterSelection,
     handleSetCurrentCharacters,
     handleStartGame,
+
     gameIsStarted,
     getCharactersPosition,
     checkSelectionOutcome
