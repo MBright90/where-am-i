@@ -2,6 +2,7 @@ import { AppContext } from '@app/context/Context'
 import React, { useContext } from 'react'
 
 import style from './SelectionMenu.module.scss'
+import SelectionMenuItem from './selectionItem/SelectionMenuItem'
 
 interface SelectionMenuProps {
   menuY: number
@@ -11,16 +12,11 @@ interface SelectionMenuProps {
 const SelectionMenu: React.FC<SelectionMenuProps> = () => {
   const { currentCharacters } = useContext(AppContext)
 
-  const checkMenuPosition = () => {
-
-  }
-
   const characterChoiceArr = currentCharacters.map((character) => {
-    character
+    return <SelectionMenuItem character={character} key={character.characterId} />
   })
-  console.log(characterChoiceArr)
 
-  return <div className={style.selectionMenu}></div>
+  return <div className={style.selectionMenu}>{characterChoiceArr}</div>
 }
 
 export default SelectionMenu
