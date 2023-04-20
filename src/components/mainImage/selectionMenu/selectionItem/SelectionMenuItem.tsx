@@ -5,12 +5,19 @@ import style from './SelectionMenuItem.module.scss'
 
 interface SelectionMenuItemProps {
   character: Character
+  onSelectionClick: (characterId: string) => void
 }
 
-const SelectionMenuItem: React.FC<SelectionMenuItemProps> = ({ character }) => {
-  console.log(character)
+const SelectionMenuItem: React.FC<SelectionMenuItemProps> = ({ character, onSelectionClick }) => {
+  const handleOnSelectionClick = () => {
+    onSelectionClick(character.characterId)
+  }
 
-  return <button className={style.selectionMenuItem}>{character.name}</button>
+  return (
+    <button className={style.selectionMenuItem} onClick={handleOnSelectionClick}>
+      {character.name}
+    </button>
+  )
 }
 
 export default SelectionMenuItem
