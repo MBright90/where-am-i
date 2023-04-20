@@ -5,15 +5,25 @@ import style from './SelectionMenu.module.scss'
 import SelectionMenuItem from './selectionItem/SelectionMenuItem'
 
 interface SelectionMenuProps {
-  menuY: number
-  menuX: number
+  posX: number
+  posY: number
 }
 
-const SelectionMenu: React.FC<SelectionMenuProps> = () => {
-  const { currentCharacters } = useContext(AppContext)
+const SelectionMenu: React.FC<SelectionMenuProps> = ({ posX, posY }) => {
+  const { currentCharacters, checkSelectionOutcome } = useContext(AppContext)
+
+  const onSelectionClick = (characterId: string) => {
+    checkSelectionOutcome(characterId, { posX, posY })
+  }
 
   const characterChoiceArr = currentCharacters.map((character) => {
-    return <SelectionMenuItem character={character} key={character.characterId} />
+    return (
+      <SelectionMenuItem
+        character={character}
+        key={character.characterId}
+        onSelectionClick={onSelectionClick}
+      />
+    )
   })
 
   return <div className={style.selectionMenu}>{characterChoiceArr}</div>
