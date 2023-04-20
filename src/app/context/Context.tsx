@@ -11,7 +11,7 @@ interface AppContextData {
   handleStartGame: (imageId: string) => Promise<void>
   checkSelectionOutcome: (
     characterID: string,
-    selectionPosition: { X: number; Y: number }
+    selectionPosition: { posX: number; posY: number }
   ) => Promise<boolean>
 }
 
@@ -42,11 +42,11 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   async function checkSelectionOutcome(
     characterId: string,
-    selectionPosition: { X: number; Y: number }
+    selectionPosition: { posX: number; posY: number }
   ): Promise<boolean> {
     const positionRanges = await getCharactersPosition(characterId, currentImage)
-    const selectedX: number = selectionPosition.X
-    const selectedY: number = selectionPosition.Y
+    const selectedX: number = selectionPosition.posX
+    const selectedY: number = selectionPosition.posY
     if (
       positionRanges.lowX < selectedX &&
       positionRanges.highX > selectedX &&
