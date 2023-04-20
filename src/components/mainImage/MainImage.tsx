@@ -11,13 +11,12 @@ interface MainImageProps {
 }
 
 const MainImage: React.FC<MainImageProps> = ({ imageURL }) => {
-  const [menuShowing, setMenuShowing] = useState({ isShowing: false, menuX: 0, menuY: 0 })
+  const [menuShowing, setMenuShowing] = useState({ isShowing: false, posX: 0, posY: 0 })
 
   const convertToPercentage = (position: number, totalLength: number) => {
     return (position / totalLength) * 100
   }
 
-  // Currently logs current coords of click
   const retrieveCoordsPercentage: MouseEventHandler<HTMLImageElement> = (e) => {
     const rect = e.currentTarget.getBoundingClientRect()
 
@@ -26,21 +25,26 @@ const MainImage: React.FC<MainImageProps> = ({ imageURL }) => {
 
     setMenuShowing({
       isShowing: true,
-      menuX: xPosPercent,
-      menuY: yPosPercent
+      posX: xPosPercent,
+      posY: yPosPercent
     })
+  }
+
+  const handleImageClick: MouseEventHandler<HTMLImageElement> = (e) => {
+    if (menuShowing.isShowing)
+      setMenuShowing({
+        isShowing: false,
+        posX: 0,
+        posY: 0
+      })
+    else retrieveCoordsPercentage(e)
   }
 
   return (
     <React.Fragment>
-      <img
-        className={style.mainImage}
-        src={imageURL}
-        alt="mainImage"
-        onClick={retrieveCoordsPercentage}
-      />
+      <img className={style.mainImage} src={imageURL} alt="mainImage" onClick={handleImageClick} />
       {menuShowing.isShowing ? (
-        <SelectionMenu menuX={menuShowing.menuX} menuY={menuShowing.menuY} />
+        <SelectionMenu posX={menuShowing.posX} posY={menuShowing.posY} />
       ) : null}
     </React.Fragment>
   )
