@@ -40,11 +40,23 @@ const MainImage: React.FC<MainImageProps> = ({ imageURL }) => {
     else retrieveCoordsPercentage(e)
   }
 
+  const handleMenuClick = () => {
+    setMenuShowing({
+      isShowing: false,
+      posX: 0,
+      posY: 0
+    })
+  }
+
   return (
     <React.Fragment>
       <img className={style.mainImage} src={imageURL} alt="mainImage" onClick={handleImageClick} />
       {menuShowing.isShowing ? (
-        <SelectionMenu posX={menuShowing.posX} posY={menuShowing.posY} />
+        <SelectionMenu
+          posX={menuShowing.posX}
+          posY={menuShowing.posY}
+          handleMenuClick={handleMenuClick}
+        />
       ) : null}
     </React.Fragment>
   )
