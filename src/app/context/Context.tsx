@@ -6,27 +6,30 @@ import React, { ReactNode, createContext, useState } from 'react'
 interface AppContextData {
   currentCharacters: Character[]
   currentImage: string
+  currentImageId: string
   gameIsStarted: boolean
   getCharactersPosition: typeof getCharactersPosition
   handleStartGame: (imageId: string) => Promise<void>
   checkSelectionOutcome: (
     characterID: string,
     selectionPosition: { posX: number; posY: number }
-  ) => Promise<boolean>
+  ) => Promise<void>
 }
 
 export const AppContext = createContext<AppContextData>({
   currentCharacters: [],
   currentImage: '',
+  currentImageId: '',
   gameIsStarted: false,
   getCharactersPosition,
   handleStartGame: () => Promise.resolve(),
-  checkSelectionOutcome: () => Promise.resolve(false)
+  checkSelectionOutcome: () => Promise.resolve()
 })
 
 const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [currentCharacters, setCurrentCharacters] = useState<Character[]>([])
   const [currentImage, setCurrentImage] = useState<string>('')
+  const [currentImageId, setCurrentImageId] = useState<string>('')
   const [gameIsStarted, setGameIsStarted] = useState<boolean>(false)
 
   async function handleSetCurrentCharacters(imageId: string): Promise<void> {
@@ -37,14 +40,15 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   async function handleStartGame(imageId: string): Promise<void> {
     setCurrentImage(locationImageDatabase[imageId])
     await handleSetCurrentCharacters(imageId)
+    setCurrentImageId(imageId)
     setGameIsStarted(true)
   }
 
   async function checkSelectionOutcome(
     characterId: string,
     selectionPosition: { posX: number; posY: number }
-  ): Promise<boolean> {
-    const positionRanges = await getCharactersPosition(characterId, currentImage)
+  ): Promise<void> {
+    const positionRanges = await getCharactersPosition(characterId, currentImageId)
     const selectedX: number = selectionPosition.posX
     const selectedY: number = selectionPosition.posY
     if (
@@ -53,19 +57,24 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       positionRanges.lowY < selectedY &&
       positionRanges.highY > selectedY
     )
-      return true
-    return false
+      setCharacterAsFound(characterId)
   }
 
-  function handleCharacterSelection() {
-    console.log('ham please')
+  function setCharacterAsFound(characterId: string) {
+    const prevCurrentCharacters: Array<Character> = [...currentCharacters]
+    const indexOfCharacter: number = prevCurrentCharacters.findIndex(
+      (character) => character.characterId === characterId
+    )
+    prevCurrentCharacters[indexOfCharacter].hasFound = true
+    setCurrentCharacters([...prevCurrentCharacters])
   }
 
   const contextValue = {
     currentCharacters,
     currentImage,
+    currentImageId,
 
-    handleCharacterSelection,
+    setCharacterAsFound,
     handleSetCurrentCharacters,
     handleStartGame,
 
