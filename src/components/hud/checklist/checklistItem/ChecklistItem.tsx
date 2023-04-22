@@ -14,7 +14,9 @@ const ChecklistItem: React.FC<ChecklistItemProps> = ({ character, image }) => {
     <div className={style.checklistItem}>
       <img src={image} alt={character.characterId} />
       <p>{character.name}</p>
-      {character.hasFound ? <img src={utilityImageDatabase.tick} alt="tick" /> : null}
+      {character.hasFound ? (
+        <img src={utilityImageDatabase.tick} alt="tick" className={style.found} />
+      ) : null}
     </div>
   )
 }
