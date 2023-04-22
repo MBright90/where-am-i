@@ -14,7 +14,11 @@ const SelectionMenuItem: React.FC<SelectionMenuItemProps> = ({ character, onSele
   }
 
   return (
-    <button className={style.selectionMenuItem} onClick={handleOnSelectionClick}>
+    <button
+      className={style.selectionMenuItem}
+      onClick={handleOnSelectionClick}
+      disabled={character.hasFound ? true : false}
+    >
       {character.name}
     </button>
   )
