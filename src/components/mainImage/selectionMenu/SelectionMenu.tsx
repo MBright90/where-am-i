@@ -17,8 +17,11 @@ const SelectionMenu: React.FC<SelectionMenuProps> = ({ handleMenuClick, posX, po
   // visibility at all times
   const calcPosX: string = posX > 50 ? `calc(${posX}% - 120px)` : `calc(${posX}% + 20px)`
 
-  const onSelectionClick = (characterId: string) => {
-    checkSelectionOutcome(characterId, { posX, posY })
+  // TODO: Ensure position relative to image, not viewport
+  // TODO: Create responsiveness for Y axis to check top/bottom and adjust
+
+  async function onSelectionClick(characterId: string) {
+    await checkSelectionOutcome(characterId, { posX, posY })
     handleMenuClick()
   }
 
