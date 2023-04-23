@@ -13,12 +13,10 @@ interface SelectionMenuProps {
 const SelectionMenu: React.FC<SelectionMenuProps> = ({ handleMenuClick, posX, posY }) => {
   const { currentCharacters, checkSelectionOutcome } = useContext(AppContext)
 
-  // Check the side of the image click was on, and adjust menu position to ensure
+  // Check the side (X & Y) of the image click was on, and adjust menu position to ensure
   // visibility at all times
-  const calcPosX: string = posX > 50 ? `calc(${posX}% - 120px)` : `calc(${posX}% + 20px)`
-
-  // TODO: Ensure position relative to image, not viewport
-  // TODO: Create responsiveness for Y axis to check top/bottom and adjust
+  const calcPosX: string = posX > 50 ? `calc(${posX}% - 150px)` : `calc(${posX}% + 20px)`
+  const calcPosY: string = posY > 80 ? `calc(${posY}% - 140px)` : `calc(${posY}%)`
 
   async function onSelectionClick(characterId: string) {
     await checkSelectionOutcome(characterId, { posX, posY })
@@ -36,7 +34,7 @@ const SelectionMenu: React.FC<SelectionMenuProps> = ({ handleMenuClick, posX, po
   })
 
   return (
-    <div className={style.selectionMenu} style={{ top: `${posY}%`, left: calcPosX }}>
+    <div className={style.selectionMenu} style={{ top: calcPosY, left: calcPosX }}>
       {characterChoiceArr}
     </div>
   )
