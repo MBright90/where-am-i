@@ -1,5 +1,5 @@
 import { getCharactersPosition, retrieveCharacters } from '@app/firebase/firebaseFuncs'
-import { correctAudio, incorrectAudio } from '@assets/audio'
+import { correctAudio, incorrectAudio, victoryAudio } from '@assets/audio'
 import { locationImageDatabase } from '@assets/images'
 import { Character } from '@customTypes/types'
 import React, { ReactNode, createContext, useMemo, useState } from 'react'
@@ -42,6 +42,15 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   const memoCorrectAudio = useMemo(() => new Audio(correctAudio), [])
   const memoIncorrectAudio = useMemo(() => new Audio(incorrectAudio), [])
+  const memoVictoryAudio = useMemo(() => new Audio(victoryAudio), [])
+
+  function playSound(type: string) {
+    if (audioIsActive) {
+      if (type === 'incorrect') memoIncorrectAudio.play()
+      else if (type === 'correct') memoCorrectAudio.play()
+      else if (type === 'victory') memoVictoryAudio.play()
+    }
+  }
 
   async function handleSetCurrentCharacters(imageId: string): Promise<void> {
     const characters: Character[] = await retrieveCharacters(imageId)
@@ -53,6 +62,14 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     await handleSetCurrentCharacters(imageId)
     setCurrentImageId(imageId)
     setGameIsStarted(true)
+  }
+
+  function checkGameOutcome() {
+    let gameEnded = true
+    currentCharacters.forEach((character) => {
+      if (character.hasFound) gameEnded = false
+    })
+    return gameEnded
   }
 
   async function checkSelectionOutcome(
@@ -69,9 +86,14 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       positionRanges.highY > selectedY
     ) {
       setCharacterAsFound(characterId)
-      if (audioIsActive) memoCorrectAudio.play()
+      if (checkGameOutcome()) {
+        playSound('victory')
+        setGameIsStarted(false)
+      } else {
+        playSound('correct')
+      }
     } else {
-      if (audioIsActive) memoIncorrectAudio.play()
+      playSound('incorrect')
     }
   }
 
