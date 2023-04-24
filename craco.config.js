@@ -17,6 +17,19 @@ module.exports = {
           test: /\.(js|jsx)$/,
           exclude: /(node_modules|bower_components)/,
           use: [{ loader: 'babel-loader' }]
+        },
+        {
+          test: /\.(mp3|wav)$/,
+          exclude: /(node_modules|bower_components)/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[name].[ext]',
+                outputPath: 'audio/'
+              }
+            }
+          ]
         }
       ]
     }
