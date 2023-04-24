@@ -1,14 +1,16 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+import { AppContext } from '@app/context/Context'
 import { faVolumeHigh, faVolumeXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import React, { useContext } from 'react'
 
 import style from './SettingsMenuAudio.module.scss'
 
 const SettingsMenuAudio: React.FC = () => {
-  let audioLevel = true
+  const { audioIsActive, handleAudioChange } = useContext(AppContext)
+
   const toggleAudio = () => {
-    audioLevel = !audioLevel
+    handleAudioChange(!audioIsActive)
   }
 
   const handleToggleClick: React.MouseEventHandler<HTMLDivElement> = (e) => {
@@ -25,7 +27,10 @@ const SettingsMenuAudio: React.FC = () => {
       }}
       tabIndex={0}
     >
-      <FontAwesomeIcon className={style.faIcon} icon={audioLevel ? faVolumeHigh : faVolumeXmark} />
+      <FontAwesomeIcon
+        className={style.faIcon}
+        icon={audioIsActive ? faVolumeHigh : faVolumeXmark}
+      />
     </div>
   )
 }
