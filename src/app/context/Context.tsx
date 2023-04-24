@@ -4,11 +4,13 @@ import { Character } from '@customTypes/types'
 import React, { ReactNode, createContext, useState } from 'react'
 
 interface AppContextData {
+  audioIsActive: boolean
   currentCharacters: Character[]
   currentImage: string
   currentImageId: string
   gameIsStarted: boolean
   getCharactersPosition: typeof getCharactersPosition
+  handleAudioChange: (newState: boolean) => void
   handleStartGame: (imageId: string) => Promise<void>
   checkSelectionOutcome: (
     characterID: string,
@@ -17,11 +19,13 @@ interface AppContextData {
 }
 
 export const AppContext = createContext<AppContextData>({
+  audioIsActive: true,
   currentCharacters: [],
   currentImage: '',
   currentImageId: '',
   gameIsStarted: false,
   getCharactersPosition,
+  handleAudioChange: () => Promise.resolve(),
   handleStartGame: () => Promise.resolve(),
   checkSelectionOutcome: () => Promise.resolve()
 })
@@ -31,6 +35,7 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [currentImage, setCurrentImage] = useState<string>('')
   const [currentImageId, setCurrentImageId] = useState<string>('')
   const [gameIsStarted, setGameIsStarted] = useState<boolean>(false)
+  const [audioIsActive, setAudioIsActive] = useState<boolean>(true)
 
   async function handleSetCurrentCharacters(imageId: string): Promise<void> {
     const characters: Character[] = await retrieveCharacters(imageId)
@@ -69,6 +74,10 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     setCurrentCharacters([...prevCurrentCharacters])
   }
 
+  function handleAudioChange(newState: boolean) {
+    setAudioIsActive(newState)
+  }
+
   const contextValue = {
     currentCharacters,
     currentImage,
@@ -80,7 +89,10 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
     gameIsStarted,
     getCharactersPosition,
-    checkSelectionOutcome
+    checkSelectionOutcome,
+
+    audioIsActive,
+    handleAudioChange
   }
 
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
