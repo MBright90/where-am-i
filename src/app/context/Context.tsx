@@ -16,7 +16,7 @@ interface AppContextData {
   checkSelectionOutcome: (
     characterID: string,
     selectionPosition: { posX: number; posY: number }
-  ) => Promise<void>
+  ) => Promise<boolean>
 }
 
 export const AppContext = createContext<AppContextData>({
@@ -28,7 +28,7 @@ export const AppContext = createContext<AppContextData>({
   getCharactersPosition,
   handleAudioChange: () => Promise.resolve(),
   handleStartGame: () => Promise.resolve(),
-  checkSelectionOutcome: () => Promise.resolve()
+  checkSelectionOutcome: () => Promise.resolve(false)
 })
 
 const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -75,7 +75,7 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   async function checkSelectionOutcome(
     characterId: string,
     selectionPosition: { posX: number; posY: number }
-  ): Promise<void> {
+  ): Promise<boolean> {
     const positionRanges = await memoGetCharactersPosition(characterId, currentImageId)
     const selectedX: number = selectionPosition.posX
     const selectedY: number = selectionPosition.posY
@@ -92,8 +92,10 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       } else {
         playSound('correct')
       }
+      return true
     } else {
       playSound('incorrect')
+      return false
     }
   }
 
