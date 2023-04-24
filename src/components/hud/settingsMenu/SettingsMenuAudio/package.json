@@ -1,0 +1,8 @@
+{
+    "name": "settings-menu-audio",
+    "version": "1.0.0",
+    "main": "SettingsMenuAudio.tsx",
+    "dependencies": {
+        "react": "^17.0.2"
+    }
+}
