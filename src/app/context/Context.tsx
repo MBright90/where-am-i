@@ -1,7 +1,8 @@
 import { getCharactersPosition, retrieveCharacters } from '@app/firebase/firebaseFuncs'
+import { correctAudio, incorrectAudio } from '@assets/audio'
 import { locationImageDatabase } from '@assets/images'
 import { Character } from '@customTypes/types'
-import React, { ReactNode, createContext, useState } from 'react'
+import React, { ReactNode, createContext, useMemo, useState } from 'react'
 
 interface AppContextData {
   audioIsActive: boolean
@@ -37,6 +38,11 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [gameIsStarted, setGameIsStarted] = useState<boolean>(false)
   const [audioIsActive, setAudioIsActive] = useState<boolean>(true)
 
+  const memoGetCharactersPosition = useMemo(() => getCharactersPosition, [])
+
+  const memoCorrectAudio = useMemo(() => new Audio(correctAudio), [])
+  const memoIncorrectAudio = useMemo(() => new Audio(incorrectAudio), [])
+
   async function handleSetCurrentCharacters(imageId: string): Promise<void> {
     const characters: Character[] = await retrieveCharacters(imageId)
     setCurrentCharacters([...characters])
@@ -53,7 +59,7 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     characterId: string,
     selectionPosition: { posX: number; posY: number }
   ): Promise<void> {
-    const positionRanges = await getCharactersPosition(characterId, currentImageId)
+    const positionRanges = await memoGetCharactersPosition(characterId, currentImageId)
     const selectedX: number = selectionPosition.posX
     const selectedY: number = selectionPosition.posY
     if (
@@ -61,8 +67,12 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       positionRanges.highX > selectedX &&
       positionRanges.lowY < selectedY &&
       positionRanges.highY > selectedY
-    )
+    ) {
       setCharacterAsFound(characterId)
+      if (audioIsActive) memoCorrectAudio.play()
+    } else {
+      if (audioIsActive) memoIncorrectAudio.play()
+    }
   }
 
   function setCharacterAsFound(characterId: string) {
