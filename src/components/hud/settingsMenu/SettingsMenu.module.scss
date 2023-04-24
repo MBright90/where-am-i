@@ -1,4 +1,4 @@
-.settingsMenu {
+.settingsMenuToggle {
     align-items: center;
     background-color: rgba(50, 50, 50, 0.7);
     border: 3px solid #fff;
@@ -27,4 +27,19 @@
         -moz-transition: transform ease-in-out .3s;
         -o-transition: transform ease-in-out .3s;
     }
+}
+
+.settingsMenu {
+    cursor: default;
+    max-height: 0;
+    width: 100%;
+
+    &.settingsMenuActive {
+        max-height: 800px;
+    }
+
+    transition: max-height ease-in-out .5s;
+    -webkit-transition: max-height ease-in-out .5s;
+    -moz-transition: max-height ease-in-out .5s;
+    -o-transition: max-height ease-in-out .5s;
 }
