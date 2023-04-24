@@ -4,10 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 
 import style from './SettingsMenu.module.scss'
+import SettingsMenuAudio from './SettingsMenuAudio/SettingsMenuAudio'
 
 const SettingsMenu: React.FC = () => {
   const [isShowing, setIsShowing] = useState<boolean>(false)
-  // Add context audio functionality here
 
   const handleToggleClick = () => {
     setIsShowing(!isShowing)
@@ -15,14 +15,22 @@ const SettingsMenu: React.FC = () => {
 
   return (
     <div
-      className={style.settingsMenu}
+      className={style.settingsMenuToggle}
       onClick={handleToggleClick}
       onKeyDown={(e) => {
         if (e.code === 'enter') handleToggleClick()
       }}
       tabIndex={0}
     >
-      <FontAwesomeIcon className={style.faIcon} icon={faEllipsis} />
+      <FontAwesomeIcon
+        className={`${style.faIcon} ${isShowing ? style.toggleActive : ''}`}
+        icon={faEllipsis}
+      />
+      {isShowing ? (
+        <div className={`${style.settingsMenu} ${style.settingsMenuActive}`}>
+          <SettingsMenuAudio />
+        </div>
+      ) : null}
     </div>
   )
 }
