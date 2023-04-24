@@ -8,9 +8,15 @@ interface SelectionMenuProps {
   posX: number
   posY: number
   handleMenuClick: () => void
+  showFeedback: (outcome: boolean, posX: number, posY: number) => void
 }
 
-const SelectionMenu: React.FC<SelectionMenuProps> = ({ handleMenuClick, posX, posY }) => {
+const SelectionMenu: React.FC<SelectionMenuProps> = ({
+  handleMenuClick,
+  showFeedback,
+  posX,
+  posY
+}) => {
   const { currentCharacters, checkSelectionOutcome } = useContext(AppContext)
 
   // Check the side (X & Y) of the image click was on, and adjust menu position to ensure
@@ -19,7 +25,8 @@ const SelectionMenu: React.FC<SelectionMenuProps> = ({ handleMenuClick, posX, po
   const calcPosY: string = posY > 80 ? `calc(${posY}% - 140px)` : `calc(${posY}%)`
 
   async function onSelectionClick(characterId: string) {
-    await checkSelectionOutcome(characterId, { posX, posY })
+    const result: boolean = await checkSelectionOutcome(characterId, { posX, posY })
+    showFeedback(result, posX, posY)
     handleMenuClick()
   }
 
