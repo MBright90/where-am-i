@@ -1,0 +1,30 @@
+.settingsMenu {
+    align-items: center;
+    background-color: rgba(50, 50, 50, 0.7);
+    border: 3px solid #fff;
+    border-radius: 10px;
+    color: #FFF;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    min-height: 40px;
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    width: 55px;
+
+    .faIcon {
+        font-size: 30px;
+        margin: 6px 0 8px 0;
+
+        &.toggleActive {
+            transform: rotate(90deg);
+            transform-origin: center;
+        }
+
+        transition: transform ease-in-out .3s;
+        -webkit-transition: transform ease-in-out .3s;
+        -moz-transition: transform ease-in-out .3s;
+        -o-transition: transform ease-in-out .3s;
+    }
+}

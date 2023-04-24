@@ -1,0 +1,8 @@
+{
+    "name": "settings-menu",
+    "version": "1.0.0",
+    "main": "SettingsMenu.tsx",
+    "dependencies": {
+        "react": "^17.0.2"
+    }
+}
