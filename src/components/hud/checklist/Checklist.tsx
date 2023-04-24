@@ -39,9 +39,7 @@ const Checklist: React.FC = () => {
         className={`${style.faIcon} ${isShowing ? style.toggleActive : ''}`}
       />
       {isShowing ? (
-        <div className={`${style.checklist} ${isShowing ? style.checklistActive : ''}`}>
-          {createChecklistArr()}
-        </div>
+        <div className={`${style.checklist} ${style.checklistActive}`}>{createChecklistArr()}</div>
       ) : null}
     </div>
   )
