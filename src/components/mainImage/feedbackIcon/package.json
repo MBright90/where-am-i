@@ -1,0 +1,8 @@
+{
+    "name": "feedback-icon",
+    "version": "1.0.0",
+    "main": "FeedbackIcon.tsx",
+    "dependencies": {
+        "react": "^17.0.2"
+    }
+}
