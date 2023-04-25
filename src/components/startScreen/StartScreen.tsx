@@ -26,7 +26,12 @@ const StartScreen: React.FC<StartScreenProps> = ({ locationImageIdArr }) => {
     )
   })
 
-  return <div className={style.startScreen}>{imageTileArray}</div>
+  return (
+    <div className={style.startScreen}>
+      <h1>Choose Your Image</h1>
+      <div className={style.startScreenImages}>{imageTileArray}</div>
+    </div>
+  )
 }
 
 export default StartScreen
