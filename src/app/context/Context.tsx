@@ -1,23 +1,8 @@
 import { getCharactersPosition, retrieveCharacters } from '@app/firebase/firebaseFuncs'
 import { correctAudio, incorrectAudio, victoryAudio } from '@assets/audio'
 import { locationImageDatabase } from '@assets/images'
-import { Character } from '@customTypes/types'
+import { AppContextData, Character } from '@customTypes/types'
 import React, { ReactNode, createContext, useMemo, useState } from 'react'
-
-interface AppContextData {
-  audioIsActive: boolean
-  currentCharacters: Character[]
-  currentImage: string
-  currentImageId: string
-  gameIsStarted: boolean
-  getCharactersPosition: typeof getCharactersPosition
-  handleAudioChange: (newState: boolean) => void
-  handleStartGame: (imageId: string) => Promise<void>
-  checkSelectionOutcome: (
-    characterID: string,
-    selectionPosition: { posX: number; posY: number }
-  ) => Promise<boolean>
-}
 
 export const AppContext = createContext<AppContextData>({
   audioIsActive: true,
@@ -25,10 +10,13 @@ export const AppContext = createContext<AppContextData>({
   currentImage: '',
   currentImageId: '',
   gameIsStarted: false,
-  getCharactersPosition,
+  isVictorious: false,
+
+  checkSelectionOutcome: () => Promise.resolve(false),
+  memoGetCharactersPosition: () => Promise.resolve({}),
   handleAudioChange: () => Promise.resolve(),
   handleStartGame: () => Promise.resolve(),
-  checkSelectionOutcome: () => Promise.resolve(false)
+  resetGame: () => Promise.resolve(false)
 })
 
 const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -37,6 +25,7 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [currentImageId, setCurrentImageId] = useState<string>('')
   const [gameIsStarted, setGameIsStarted] = useState<boolean>(false)
   const [audioIsActive, setAudioIsActive] = useState<boolean>(true)
+  const [isVictorious, setIsVictorious] = useState<boolean>(false)
 
   const memoGetCharactersPosition = useMemo(() => getCharactersPosition, [])
 
@@ -67,7 +56,7 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   function checkGameOutcome() {
     let gameEnded = true
     currentCharacters.forEach((character) => {
-      if (character.hasFound) gameEnded = false
+      if (!character.hasFound) gameEnded = false
     })
     return gameEnded
   }
@@ -87,8 +76,8 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     ) {
       setCharacterAsFound(characterId)
       if (checkGameOutcome()) {
+        setIsVictorious(true)
         playSound('victory')
-        setGameIsStarted(false)
       } else {
         playSound('correct')
       }
@@ -108,6 +97,10 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     setCurrentCharacters([...prevCurrentCharacters])
   }
 
+  function resetGame() {
+    setGameIsStarted(false)
+  }
+
   function handleAudioChange(newState: boolean) {
     setAudioIsActive(newState)
   }
@@ -116,17 +109,19 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     currentCharacters,
     currentImage,
     currentImageId,
+    gameIsStarted,
+    isVictorious,
 
     setCharacterAsFound,
     handleSetCurrentCharacters,
     handleStartGame,
 
-    gameIsStarted,
-    getCharactersPosition,
+    memoGetCharactersPosition,
     checkSelectionOutcome,
 
     audioIsActive,
-    handleAudioChange
+    handleAudioChange,
+    resetGame
   }
 
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
