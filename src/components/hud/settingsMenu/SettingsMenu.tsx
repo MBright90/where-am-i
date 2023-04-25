@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 
 import style from './SettingsMenu.module.scss'
-import SettingsMenuAudio from './SettingsMenuAudio/SettingsMenuAudio'
+import SettingsMenuAudio from './settingsMenuAudio/SettingsMenuAudio'
+import SettingsMenuReset from './settingsMenuReset/SettingsMenuReset'
 
 const SettingsMenu: React.FC = () => {
   const [isShowing, setIsShowing] = useState<boolean>(false)
@@ -29,6 +30,7 @@ const SettingsMenu: React.FC = () => {
       {isShowing ? (
         <div className={`${style.settingsMenu} ${style.settingsMenuActive}`}>
           <SettingsMenuAudio />
+          <SettingsMenuReset />
         </div>
       ) : null}
     </div>
