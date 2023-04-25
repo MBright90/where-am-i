@@ -1,8 +1,21 @@
 .startScreen {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    gap: 30px;
+    padding: 15vh 0;
+
+    h1 {
+        color: #FFF;
+        letter-spacing: 3px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+}
+
+.startScreenImages {
     align-items: center;
     display: flex;
     justify-content: center;
     gap: 20px;
-    height: 100vh;
-    width: 100vw;
 }
