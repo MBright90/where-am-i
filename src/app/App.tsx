@@ -10,7 +10,7 @@ const App: React.FC = () => {
   const { currentImage, gameIsStarted } = useContext(AppContext)
 
   // Add any further image IDs to these props to add them to app
-  const gamePlayStart = <StartScreen locationImageIdArr={['robot-city']} />
+  const gamePlayStart = <StartScreen locationImageIdArr={['robot-city', 'robot-city']} />
 
   const gamePlayActive = (
     <React.Fragment>
@@ -19,7 +19,14 @@ const App: React.FC = () => {
     </React.Fragment>
   )
 
-  return <div className={style.appOverlay}>{gameIsStarted ? gamePlayActive : gamePlayStart}</div>
+  return (
+    <div
+      className={style.appOverlay}
+      style={gameIsStarted ? { minWidth: 900 + 'px' } : { minWidth: 100 + '%' }}
+    >
+      {gameIsStarted ? gamePlayActive : gamePlayStart}
+    </div>
+  )
 }
 
 export default App
