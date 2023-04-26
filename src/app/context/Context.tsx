@@ -25,7 +25,7 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [currentImageId, setCurrentImageId] = useState<string>('')
   const [gameIsStarted, setGameIsStarted] = useState<boolean>(false)
   const [audioIsActive, setAudioIsActive] = useState<boolean>(true)
-  const [isVictorious, setIsVictorious] = useState<boolean>(false)
+  const [isVictorious, setIsVictorious] = useState<boolean>(true)
 
   const memoGetCharactersPosition = useMemo(() => getCharactersPosition, [])
 
@@ -99,6 +99,7 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   function resetGame() {
     setGameIsStarted(false)
+    setIsVictorious(false)
   }
 
   function handleAudioChange(newState: boolean) {
