@@ -3,6 +3,7 @@ import { ImageTile } from '@customTypes/types'
 import React, { ReactNode } from 'react'
 
 import style from './StartScreen.module.scss'
+import HowToPlay from './howToPlay/HowToPlay'
 import StartImageTile from './startImageTile/StartImageTile'
 
 interface StartScreenProps {
@@ -28,8 +29,8 @@ const StartScreen: React.FC<StartScreenProps> = ({ locationImageIdArr }) => {
 
   return (
     <div className={style.startScreen}>
-      <h1>Choose Your Image</h1>
       <div className={style.startScreenImages}>{imageTileArray}</div>
+      <HowToPlay />
     </div>
   )
 }
