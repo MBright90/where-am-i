@@ -1,0 +1,28 @@
+.howToPlay {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: max(300px, 80%)
+}
+
+.howToPlayHeader {
+    color: #FFF;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.howToPlayPara {
+    color: #FFF;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-align: left;
+
+    span {
+        font-weight: bold;
+    }
+
+    &:last-of-type {
+        text-align: center;
+    }
+}
