@@ -10,7 +10,7 @@ import style from './Checklist.module.scss'
 import CheckItem from './checklistItem/ChecklistItem'
 
 const Checklist: React.FC = () => {
-  const [isShowing, setIsShowing] = useState<boolean>(false)
+  const [isShowing, setIsShowing] = useState<boolean>(true)
   const { currentCharacters } = useContext(AppContext)
 
   const handleToggleClick = () => {
