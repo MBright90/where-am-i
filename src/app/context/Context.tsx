@@ -25,7 +25,7 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [currentImageId, setCurrentImageId] = useState<string>('')
   const [gameIsStarted, setGameIsStarted] = useState<boolean>(false)
   const [audioIsActive, setAudioIsActive] = useState<boolean>(true)
-  const [isVictorious, setIsVictorious] = useState<boolean>(true)
+  const [isVictorious, setIsVictorious] = useState<boolean>(false)
 
   const memoGetCharactersPosition = useMemo(() => getCharactersPosition, [])
 
