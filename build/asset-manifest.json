@@ -1,14 +1,22 @@
 {
   "files": {
-    "main.css": "./static/css/main.3c4563af.css",
-    "main.js": "./static/js/main.5931c6e7.js",
+    "main.css": "./static/css/main.95ba0d72.css",
+    "main.js": "./static/js/main.e96ee731.js",
     "static/media/robot-city.jpg": "./static/media/robot-city.8ad8cd812dae8d55031c.jpg",
+    "static/media/general-grievous.png": "./static/media/general-grievous.1dfad4900d4579f0044d.png",
+    "static/media/victoryAudio.mp3": "./static/media/victoryAudio.93f2df79eaa65bf79dcd.mp3",
+    "static/media/claptrap.png": "./static/media/claptrap.d9b37fe2014d01c85455.png",
+    "static/media/meg-griffin.png": "./static/media/meg-griffin.0d07ece2bdb507f08660.png",
+    "static/media/mike-wazowski.png": "./static/media/mike-wazowski.8ff1509e55c730729005.png",
+    "static/media/kang-johnson.png": "./static/media/kang-johnson.558abd4acc18b6c14af1.png",
+    "static/media/correctAudio.mp3": "./static/media/correctAudio.236ed6ffbf479892427b.mp3",
+    "static/media/incorrectAudio.mp3": "./static/media/incorrectAudio.836d44bdeb10a3b2315b.mp3",
     "index.html": "./index.html",
-    "main.3c4563af.css.map": "./static/css/main.3c4563af.css.map",
-    "main.5931c6e7.js.map": "./static/js/main.5931c6e7.js.map"
+    "main.95ba0d72.css.map": "./static/css/main.95ba0d72.css.map",
+    "main.e96ee731.js.map": "./static/js/main.e96ee731.js.map"
   },
   "entrypoints": [
-    "static/css/main.3c4563af.css",
-    "static/js/main.5931c6e7.js"
+    "static/css/main.95ba0d72.css",
+    "static/js/main.e96ee731.js"
   ]
 }
