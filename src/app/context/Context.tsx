@@ -1,5 +1,5 @@
 import { getCharactersPosition, retrieveCharacters } from '@app/firebase/firebaseFuncs'
-import { correctAudio, incorrectAudio, victoryAudio } from '@assets/audio'
+import { correctAudio, incorrectAudio, introAudio, victoryAudio } from '@assets/audio'
 import { locationImageDatabase } from '@assets/images'
 import { AppContextData, Character } from '@customTypes/types'
 import React, { ReactNode, createContext, useMemo, useState } from 'react'
@@ -11,6 +11,7 @@ export const AppContext = createContext<AppContextData>({
   currentImageId: '',
   gameIsStarted: false,
   isVictorious: false,
+  memoIntroAudio: new Audio(),
 
   checkSelectionOutcome: () => Promise.resolve(false),
   memoGetCharactersPosition: () => Promise.resolve({}),
@@ -31,6 +32,7 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   const memoCorrectAudio = useMemo(() => new Audio(correctAudio), [])
   const memoIncorrectAudio = useMemo(() => new Audio(incorrectAudio), [])
+  const memoIntroAudio = useMemo(() => new Audio(introAudio), [])
   const memoVictoryAudio = useMemo(() => new Audio(victoryAudio), [])
 
   function playSound(type: string) {
@@ -112,6 +114,7 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     currentImageId,
     gameIsStarted,
     isVictorious,
+    memoIntroAudio,
 
     setCharacterAsFound,
     handleSetCurrentCharacters,
