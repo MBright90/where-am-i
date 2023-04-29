@@ -5,7 +5,7 @@ import React, { KeyboardEventHandler, MouseEventHandler, useContext } from 'reac
 import style from './StartImageTile.module.scss'
 
 const StartImageTile: React.FC<{ imageURL: string; imageId: string }> = ({ imageURL, imageId }) => {
-  const { handleStartGame, memoIntroAudio } = useContext(AppContext)
+  const { audioIsActive, handleStartGame, memoIntroAudio } = useContext(AppContext)
 
   const handleDivClick: MouseEventHandler<HTMLDivElement> = (e) => {
     const id = e.currentTarget.dataset.imageId ?? ''
@@ -23,7 +23,7 @@ const StartImageTile: React.FC<{ imageURL: string; imageId: string }> = ({ image
       data-image-id={imageId}
       onClick={(e) => {
         handleDivClick(e)
-        memoIntroAudio.play()
+        if (audioIsActive) memoIntroAudio.play()
       }}
       onKeyDown={handleDivKeyDown}
       tabIndex={0}

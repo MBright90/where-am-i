@@ -28,6 +28,7 @@ const SelectionMenu: React.FC<SelectionMenuProps> = ({
     const result: boolean = await checkSelectionOutcome(characterId, { posX, posY })
     showFeedback(result, posX, posY)
     handleMenuClick()
+    return result
   }
 
   const characterChoiceArr = currentCharacters.map((character) => {

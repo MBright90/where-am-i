@@ -11,7 +11,11 @@ export const AppContext = createContext<AppContextData>({
   currentImageId: '',
   gameIsStarted: false,
   isVictorious: false,
+
   memoIntroAudio: new Audio(),
+  memoCorrectAudio: new Audio(),
+  memoIncorrectAudio: new Audio(),
+  memoVictoryAudio: new Audio(),
 
   checkSelectionOutcome: () => Promise.resolve(false),
   memoGetCharactersPosition: () => Promise.resolve({}),
@@ -34,14 +38,6 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const memoIncorrectAudio = useMemo(() => new Audio(incorrectAudio), [])
   const memoIntroAudio = useMemo(() => new Audio(introAudio), [])
   const memoVictoryAudio = useMemo(() => new Audio(victoryAudio), [])
-
-  function playSound(type: string) {
-    if (audioIsActive) {
-      if (type === 'incorrect') memoIncorrectAudio.play()
-      else if (type === 'correct') memoCorrectAudio.play()
-      else if (type === 'victory') memoVictoryAudio.play()
-    }
-  }
 
   async function handleSetCurrentCharacters(imageId: string): Promise<void> {
     const characters: Character[] = await retrieveCharacters(imageId)
@@ -79,13 +75,9 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       setCharacterAsFound(characterId)
       if (checkGameOutcome()) {
         setIsVictorious(true)
-        playSound('victory')
-      } else {
-        playSound('correct')
       }
       return true
     } else {
-      playSound('incorrect')
       return false
     }
   }
@@ -114,7 +106,11 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     currentImageId,
     gameIsStarted,
     isVictorious,
+
     memoIntroAudio,
+    memoCorrectAudio,
+    memoIncorrectAudio,
+    memoVictoryAudio,
 
     setCharacterAsFound,
     handleSetCurrentCharacters,
