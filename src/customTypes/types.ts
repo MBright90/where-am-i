@@ -5,7 +5,11 @@ export interface AppContextData {
   currentImageId: string
   gameIsStarted: boolean
   isVictorious: boolean
+
   memoIntroAudio: HTMLAudioElement
+  memoCorrectAudio: HTMLAudioElement
+  memoIncorrectAudio: HTMLAudioElement
+  memoVictoryAudio: HTMLAudioElement
 
   checkSelectionOutcome: (
     characterID: string,
