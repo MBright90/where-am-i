@@ -56,7 +56,8 @@ async function writeNewCharacter(character: RequiredImageCharacter) {
       lowX: character.lowX,
       lowY: character.lowY,
       highX: character.highX,
-      highY: character.highY
+      highY: character.highY,
+      characterId: character.characterId
     })
   } catch (error) {
     console.log('Could not add character: ', error)
