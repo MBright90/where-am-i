@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 import SelectionMenuItem from './SelectionMenuItem'
 
 describe('SelectionMenuItem', () => {
-  let onSelectionClick: () => void
+  let onSelectionClick: () => Promise<boolean>
 
   beforeEach((onSelectionClick = jest.fn()))
 
