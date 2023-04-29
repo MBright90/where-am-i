@@ -17,13 +17,17 @@
     }
 
     svg {
-        font-size: 30px;
+        font-size: 18px;
         margin-right: 5px;
     }
 
     @media(min-width: $breakpoint-large) {
         p {
             display: inline-block;
+        }
+
+        svg {
+            font-size: 30px;   
         }
     }
 }
