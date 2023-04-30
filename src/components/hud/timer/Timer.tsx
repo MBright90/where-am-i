@@ -1,7 +1,7 @@
 import { AppContext } from '@app/context/Context'
 import { faClock } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 import style from './Timer.module.scss'
 
@@ -13,17 +13,16 @@ const formatTimer = (timeCount: number) => {
 }
 
 const Timer: React.FC = () => {
-  const [timeCount, setTimeCount] = useState(0)
-  const { isVictorious } = useContext(AppContext)
+  const { isVictorious, timeCount, handleSetTimeCount } = useContext(AppContext)
 
   useEffect(() => {
     if (isVictorious) return
 
     const timer = setInterval(() => {
-      setTimeCount((count) => count + 1)
+      handleSetTimeCount()
     }, 1000)
     return () => clearInterval(timer)
-  }, [isVictorious])
+  })
 
   return (
     <div className={style.timerContainer}>
