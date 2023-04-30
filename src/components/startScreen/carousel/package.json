@@ -1,0 +1,8 @@
+{
+    "name": "carousel",
+    "version": "1.0.0",
+    "main": "Carousel.tsx",
+    "dependencies": {
+      "react": "^17.0.2"
+    }
+}
