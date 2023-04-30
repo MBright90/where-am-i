@@ -1,4 +1,5 @@
 import { locationImageDatabase } from '@assets/images'
+import background from '@assets/images/background.jpg'
 import logo from '@assets/images/logo.png'
 import { ImageTile } from '@customTypes/types'
 import React, { ReactNode, useMemo } from 'react'
@@ -36,7 +37,7 @@ const StartScreen: React.FC<StartScreenProps> = ({ locationImageIdArr }) => {
   })
 
   return (
-    <div className={style.startScreen}>
+    <div className={style.startScreen} style={{ backgroundImage: `url(${background})` }}>
       <img className={style.logoImage} src={memoLogo.src} alt="logo"></img>
       <Carousel>{imageTileArray}</Carousel>
       <HowToPlay />
