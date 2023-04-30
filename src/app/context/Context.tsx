@@ -9,6 +9,9 @@ export const AppContext = createContext<AppContextData>({
   currentCharacters: [],
   currentImage: '',
   currentImageId: '',
+
+  timeCount: 0,
+  handleSetTimeCount: () => Promise.resolve(),
   gameIsStarted: false,
   isVictorious: false,
 
@@ -31,6 +34,7 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [gameIsStarted, setGameIsStarted] = useState<boolean>(false)
   const [audioIsActive, setAudioIsActive] = useState<boolean>(true)
   const [isVictorious, setIsVictorious] = useState<boolean>(false)
+  const [timeCount, setTimeCount] = useState<number>(0)
 
   const memoGetCharactersPosition = useMemo(() => getCharactersPosition, [])
 
@@ -94,6 +98,11 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   function resetGame() {
     setGameIsStarted(false)
     setIsVictorious(false)
+    setTimeCount(0)
+  }
+
+  function handleSetTimeCount() {
+    setTimeCount((prev) => prev + 1)
   }
 
   function handleAudioChange(newState: boolean) {
@@ -104,6 +113,9 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     currentCharacters,
     currentImage,
     currentImageId,
+
+    timeCount,
+    handleSetTimeCount,
     gameIsStarted,
     isVictorious,
 
