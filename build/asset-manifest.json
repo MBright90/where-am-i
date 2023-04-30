@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "./static/css/main.560aee15.css",
-    "main.js": "./static/js/main.47b97caf.js",
+    "main.css": "./static/css/main.a1b7bf94.css",
+    "main.js": "./static/js/main.43dc7881.js",
     "static/media/cyberpunk-city.jpg": "./static/media/cyberpunk-city.314cec99f414807b7e27.jpg",
+    "static/media/background.jpg": "./static/media/background.0d6c387198112f922782.jpg",
     "static/media/robot-city.jpg": "./static/media/robot-city.8ad8cd812dae8d55031c.jpg",
     "static/media/universe-113.jpg": "./static/media/universe-113.0d4fe7c106039f77baa0.jpg",
     "static/media/the-predator.png": "./static/media/the-predator.b9abbe6418393f989a14.png",
@@ -26,11 +27,11 @@
     "static/media/correctAudio.mp3": "./static/media/correctAudio.236ed6ffbf479892427b.mp3",
     "static/media/incorrectAudio.mp3": "./static/media/incorrectAudio.836d44bdeb10a3b2315b.mp3",
     "index.html": "./index.html",
-    "main.560aee15.css.map": "./static/css/main.560aee15.css.map",
-    "main.47b97caf.js.map": "./static/js/main.47b97caf.js.map"
+    "main.a1b7bf94.css.map": "./static/css/main.a1b7bf94.css.map",
+    "main.43dc7881.js.map": "./static/js/main.43dc7881.js.map"
   },
   "entrypoints": [
-    "static/css/main.560aee15.css",
-    "static/js/main.47b97caf.js"
+    "static/css/main.a1b7bf94.css",
+    "static/js/main.43dc7881.js"
   ]
 }
