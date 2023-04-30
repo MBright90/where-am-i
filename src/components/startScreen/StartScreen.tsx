@@ -1,8 +1,10 @@
 import { locationImageDatabase } from '@assets/images'
+import logo from '@assets/images/logo.png'
 import { ImageTile } from '@customTypes/types'
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useMemo } from 'react'
 
 import style from './StartScreen.module.scss'
+import Carousel from './carousel/Carousel'
 import HowToPlay from './howToPlay/HowToPlay'
 import StartImageTile from './startImageTile/StartImageTile'
 
@@ -11,6 +13,12 @@ interface StartScreenProps {
 }
 
 const StartScreen: React.FC<StartScreenProps> = ({ locationImageIdArr }) => {
+  const memoLogo = useMemo(() => {
+    const image = new Image()
+    image.src = logo
+    return image
+  }, [])
+
   const startImageArray: Array<ImageTile> = locationImageIdArr.map((locationImageId: string) => {
     const imageURL = locationImageDatabase[locationImageId]
     if (!imageURL) throw new Error(`No image found for ID: ${locationImageId}`)
@@ -29,7 +37,8 @@ const StartScreen: React.FC<StartScreenProps> = ({ locationImageIdArr }) => {
 
   return (
     <div className={style.startScreen}>
-      <div className={style.startScreenImages}>{imageTileArray}</div>
+      <img className={style.logoImage} src={memoLogo.src} alt="logo"></img>
+      <Carousel>{imageTileArray}</Carousel>
       <HowToPlay />
     </div>
   )
