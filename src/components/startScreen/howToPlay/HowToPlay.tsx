@@ -13,7 +13,7 @@ const HowToPlay: React.FC = () => {
         the list.
       </p>
       <p className={style.howToPlayPara}>
-        Good luck finding <span>all</span> five characters.
+        Good luck finding <span>all</span> five characters in each location.
       </p>
     </div>
   )
