@@ -2,15 +2,15 @@
     border: 3px solid #fff;
     border-radius: 10px;
     cursor: pointer;
-    height: 400px;
-
-    &:hover {
-        transform: scale(1.05)
-    }
+    display: inline-block;
+    height: 380px;
+    overflow: hidden;
+    width: 280px;
 
     img {
         border-radius: 10px;
-        height: 100%;
+        height: auto;
+        width: 100%;
     }
 
     transition: transform .1s;
