@@ -3,6 +3,9 @@ export interface AppContextData {
   currentCharacters: Character[]
   currentImage: string
   currentImageId: string
+
+  timeCount: number
+  handleSetTimeCount: () => void
   gameIsStarted: boolean
   isVictorious: boolean
 
