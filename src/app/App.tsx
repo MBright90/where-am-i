@@ -11,7 +11,9 @@ const App: React.FC = () => {
   const { currentImage, gameIsStarted, isVictorious } = useContext(AppContext)
 
   // Add any further image IDs to these props to add them to app
-  const gamePlayStart = <StartScreen locationImageIdArr={['robot-city', 'universe-113']} />
+  const gamePlayStart = (
+    <StartScreen locationImageIdArr={['robot-city', 'universe-113', 'cyberpunk-city']} />
+  )
 
   const gamePlayActive = (
     <React.Fragment>
