@@ -1,8 +1,24 @@
 .selectionMenu {
+    animation: expand .2s ease-in-out;
     background-color: rgba(50, 50, 50, 0.8);
     border: 3px solid #FFF;
     border-radius: 10px;
     position: absolute;
+    transform-origin: center;
     width: 125px;
     z-index: 5
+}
+
+@keyframes expand {
+    0% {
+        transform: scale(0);
+    }
+
+    70% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
