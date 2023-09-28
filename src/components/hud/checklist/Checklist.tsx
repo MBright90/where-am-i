@@ -32,6 +32,8 @@ const Checklist: React.FC = () => {
       onKeyDown={(e) => {
         if (e.code === 'enter') handleToggleClick()
       }}
+      role="button"
+      aria-label="Checklist toggle"
       tabIndex={0}
     >
       <FontAwesomeIcon

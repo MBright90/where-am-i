@@ -12,7 +12,7 @@ interface ChecklistItemProps {
 const ChecklistItem: React.FC<ChecklistItemProps> = ({ character, image }) => {
   return (
     <div className={style.checklistItem}>
-      <img src={image} alt={character.characterId} />
+      <img src={image} alt={`${character.name} example`} role="presentation" />
       <p>{character.name}</p>
       {character.hasFound ? (
         <img src={utilityImageDatabase.tick} alt="tick" className={style.found} />
