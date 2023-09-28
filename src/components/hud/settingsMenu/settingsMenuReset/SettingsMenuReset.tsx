@@ -16,6 +16,8 @@ const SettingsMenuReset: React.FC = () => {
         if (e.code === 'enter') resetGame()
       }}
       tabIndex={0}
+      role="button"
+      aria-label="Reset game"
     >
       <FontAwesomeIcon className={style.faIcon} icon={faRotate} />
     </div>

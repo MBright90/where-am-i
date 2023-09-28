@@ -26,6 +26,9 @@ const SettingsMenuAudio: React.FC = () => {
         if (e.code === 'enter') toggleAudio
       }}
       tabIndex={0}
+      role="button"
+      aria-label="Audio toggle"
+      aria-details={audioIsActive ? 'audio active' : 'audio inactive'}
     >
       <FontAwesomeIcon
         className={style.faIcon}
