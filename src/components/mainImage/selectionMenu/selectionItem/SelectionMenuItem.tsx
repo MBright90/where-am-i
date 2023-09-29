@@ -27,6 +27,7 @@ const SelectionMenuItem: React.FC<SelectionMenuItemProps> = ({ character, onSele
         else if (audioIsActive) memoIncorrectAudio.play()
       }}
       disabled={character.hasFound ? true : false}
+      aria-label={`Choose ${character.name}`}
     >
       {character.name}
     </button>
